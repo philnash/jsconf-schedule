@@ -132,3 +132,23 @@ nav a.active{
 .day .session h3{
   color: rgb(255,0,121);
 }
+.day .session a{
+  text-decoration: none;
+  color: #333;
+}
+.day .session .description{
+  padding-top:0.5em;
+  display: none;
+}
+.day .session .active .description{
+  display: block;
+}
+.day .session .description p{
+  margin-bottom: 0.5em;
+}
+.day .session .description ul li{
+  padding:0;
+  margin-bottom: 0.5em;
+  list-style-type: disc;
+  list-style-position: inside;
+}

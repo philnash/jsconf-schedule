@@ -2,6 +2,7 @@ document.body.className = 'js';
 
 var dayLinks = document.querySelectorAll('nav a'),
     dayLists = document.querySelectorAll('.day'),
+    sessions = document.querySelectorAll('.day a'),
     today = new Date(),
     days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
     i, j, len, day, hour, todayList, hourToView;
@@ -11,6 +12,9 @@ function addClass(element, klass) {
 }
 function removeClass(element, klass){
   element.className = element.className.replace(klass, '');
+}
+function hasClass(element, klass){
+  return element.className.match(new RegExp(klass));
 }
 
 for(i=0, len=dayLinks.length; i < len; i++){
@@ -24,6 +28,19 @@ for(i=0, len=dayLinks.length; i < len; i++){
     e.target.className = 'active';
     day.className = day.className + ' active';
     window.scroll(0,0);
+  }, false);
+}
+
+for(i=0, len=sessions.length; i < len; i++){
+  sessions[i].addEventListener('click', function(e){
+    var session = e.currentTarget;
+    console.log(session);
+    e.preventDefault();
+    if(hasClass(session, 'active')){
+      removeClass(session, 'active');
+    }else{
+      addClass(session, 'active');
+    }
   }, false);
 }
 
