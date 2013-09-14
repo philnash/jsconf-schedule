@@ -126,9 +126,9 @@ nav a.active{
   background: #555;
   color:#fff;
 }
-.day .band:nth-child(2n+1){
+.day .session:nth-child(2n+1){
   background: #E8E8E8;
 }
-.day .band h3{
+.day .session h3{
   color: rgb(255,0,121);
 }
