@@ -1,0 +1,21 @@
+CACHE MANIFEST
+
+# Version 4
+
+CACHE:
+
+# Stylesheets
+/style/app.css
+
+# Images
+/images/favicon.ico
+/images/apple-touch-icon.png
+/images/apple-touch-icon-72x72.png
+/images/apple-touch-icon-114x114.png
+/images/apple-touch-icon-144x144.png
+
+# JavaScripts
+/js/app.js
+
+NETWORK:
+*
