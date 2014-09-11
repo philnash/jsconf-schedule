@@ -30,8 +30,7 @@ body,html{
 }
 body {
   line-height: 1;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: bold;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color:#333;
   padding-top:66px;
 }
@@ -57,7 +56,9 @@ a{
   -webkit-transition: color 0.3s, background-color 0.5s;
   transition: color 0.3s, background-color 0.5s;
 }
-
+code{
+  font-family: Monaco, "Courier New", Courier, monospace;
+}
 header {
   width: 100%;
   background: rgb(255,0,121);
@@ -118,7 +119,7 @@ nav a.active{
   display:none;
 }
 .day li{
-  padding: 4px 20px;
+  padding: 6px 20px;
 }
 .day .time{
   border-top: 1px solid #333;
@@ -131,6 +132,10 @@ nav a.active{
 }
 .day .session h3{
   color: rgb(255,0,121);
+  margin-bottom: 0.25em;
+}
+.day .session h3 + p{
+  font-style: italic;
 }
 .day .session a{
   text-decoration: none;
@@ -138,6 +143,7 @@ nav a.active{
 }
 .day .session .description{
   padding-top:0.5em;
+  padding-bottom:0.5em;
   display: none;
 }
 .day .session .active .description{
@@ -145,6 +151,7 @@ nav a.active{
 }
 .day .session .description p{
   margin-bottom: 0.5em;
+  line-height: 1.2;
 }
 .day .session .description ul li{
   padding:0;
