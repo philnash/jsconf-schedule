@@ -31,5 +31,11 @@ run lambda { |env|
       },
       File.open('public/prima.appcache', File::RDONLY)
     ]
+  else
+    [
+      404,
+      {},
+      File.open('public/404.html', File::RDONLY)
+    ]
   end
 }
