@@ -31,6 +31,14 @@ run lambda { |env|
       },
       File.open('public/prima.appcache', File::RDONLY)
     ]
+  when '/sw.js'
+    [
+      200,
+      {
+        'Content-Type' => 'text/javascript'
+      },
+      File.open('public/sw.js', File::RDONLY)
+    ]
   else
     [
       404,
