@@ -34,7 +34,6 @@ for(i=0, len=dayLinks.length; i < len; i++){
 for(i=0, len=sessions.length; i < len; i++){
   sessions[i].addEventListener('click', function(e){
     var session = e.currentTarget;
-    console.log(session);
     e.preventDefault();
     if(hasClass(session, 'active')){
       removeClass(session, 'active');
