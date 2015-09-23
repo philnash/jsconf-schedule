@@ -11,7 +11,7 @@ var dayLinks = document.querySelectorAll('nav a'),
     sessions = document.querySelectorAll('.day a'),
     today = new Date(),
     days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
-    i, j, len, day, hour, todayList, hourToView;
+    i, j, len, day, hour, todayList, hourToView, tab;
 
 function addClass(element, klass) {
   element.className += ' ' + klass;
@@ -51,13 +51,18 @@ for(i=0, len=sessions.length; i < len; i++){
 
 day = today.getHours() < 6 ? days[(today.getDay() + 6) % 7] : days[today.getDay()];
 hour = today.getHours();
-removeClass(document.querySelector('nav .active'), 'active');
-addClass(document.getElementById('nav_' + day), 'active');
-removeClass(document.querySelector('.day.active'), 'active');
+tab = document.getElementById('nav_' + day);
+if (tab !== null) {
+  removeClass(document.querySelector('nav .active'), 'active');
+  addClass(tab, 'active');
+}
 todayList = document.getElementById(day)
-addClass(todayList, 'active');
-hourToView = todayList.querySelector('.hour_' + hour)
-if(hourToView !== null) {
-  hourToView.scrollIntoView();
-  window.scrollBy(0,-66);
+if (todayList !== null) {
+  removeClass(document.querySelector('.day.active'), 'active');
+  addClass(todayList, 'active');
+  hourToView = todayList.querySelector('.hour_' + hour)
+  if(hourToView !== null) {
+    hourToView.scrollIntoView();
+    window.scrollBy(0,-66);
+  }
 }
