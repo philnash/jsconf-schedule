@@ -104,10 +104,12 @@ nav a.active{
 }
 
 .day{
-  display: none;
   padding-bottom: 46px;
 }
-.day.active{
+.js .day{
+  display: none;
+}
+.js .day.active{
   display: block;
 }
 .day h2{
@@ -158,6 +160,7 @@ nav a.active{
   margin-bottom: 0.5em;
   list-style-type: disc;
   list-style-position: inside;
+  line-height: 1.2;
 }
 
 .message{
