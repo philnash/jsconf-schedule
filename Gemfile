@@ -4,3 +4,4 @@ ruby '2.2.2'
 
 gem 'rack'
 gem 'thin'
+gem 'rack-ssl'

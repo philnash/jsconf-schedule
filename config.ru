@@ -2,6 +2,10 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 Bundler.require(:default)
+if ENV["RACK_ENV"] == "production"
+  require 'rack/ssl'
+  use Rack::SSL
+end
 use Rack::Chunked
 use Rack::Static,
   :urls => ["/style", "/images", "/js"],
