@@ -43,6 +43,14 @@ run lambda { |env|
       },
       File.open('public/sw.js', File::RDONLY)
     ]
+  when '/manifest.json'
+    [
+      200,
+      {
+        'Content-Type' => 'application/json'
+      },
+      File.open('public/manifest.json', File::RDONLY)
+    ]
   else
     [
       404,

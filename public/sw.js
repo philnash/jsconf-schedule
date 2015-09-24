@@ -1,13 +1,29 @@
 importScripts('/js/serviceworker-cache-polyfill.js');
 
+const currentCache = 'jsconf-schedule-2015-v2';
+
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('jsconf-schedule-2015-v1').then(function(cache){
+    caches.open(currentCache).then(function(cache){
       return cache.addAll([
         '/',
         '/style/app.css',
         '/js/app.js'
       ]);
+    })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  var cacheWhitelist = [currentCache];
+
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          return caches.delete(keyList[i]);
+        }
+      }));
     })
   );
 });
