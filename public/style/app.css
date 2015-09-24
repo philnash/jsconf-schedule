@@ -32,7 +32,7 @@ body {
   line-height: 1;
   font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color:#333;
-  padding-top:66px;
+  padding-top:65px;
 }
 ol, ul {
   list-style: none;
@@ -84,8 +84,8 @@ footer{
 nav{
   display: table;
   width: 100%;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid rgb(255,0,121);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid rgb(255,0,121);
   position: fixed;
   top: 36px;
 }
