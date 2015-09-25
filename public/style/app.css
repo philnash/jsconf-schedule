@@ -1,93 +1,3 @@
-/* rgb(255, 115, 115) #ff6666 */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  font: inherit;
-  font-size: 100%;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border: 0;
-}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -102,19 +12,29 @@ nav,
 section {
   display: block;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
 body,
 html {
   height: 100%;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 16px;
 }
 body {
-  font-family: Verdana, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-family: Verdana, sans-serif;
   line-height: 1.25;
   padding-top: 93px;
   color: #bbbbbb;
-}
-ol,
-ul {
-  list-style: none;
+  font-size: 0.875em;
 }
 blockquote,
 q {
@@ -143,8 +63,6 @@ code {
 }
 header {
   overflow: hidden;
-  font-size: 18px;
-  font-weight: bold;
   position: fixed;
   top: 0;
   width: 100%;
@@ -155,12 +73,13 @@ header {
 }
 header h1 {
   margin: 10px 0;
+  font-size: 18px;
 }
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 10px 20px;
+  padding: 0 20px;
   border-top: 2px solid #ff0079;
   background: #efefef;
 }
@@ -186,6 +105,11 @@ nav a.active {
   color: #ff0079;
   background: #fff;
 }
+.events {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 .day {
   padding-bottom: 46px;
 }
@@ -199,6 +123,7 @@ nav a.active {
   display: none;
 }
 .day h2 {
+  margin: 0;
   padding: 4px 20px;
   color: #fff;
   background: #333;
@@ -212,8 +137,6 @@ nav a.active {
 .day .session {
   margin: 10px;
   border: 1px solid #efefef;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .day .session h3 {
   margin-bottom: .25em;
