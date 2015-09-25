@@ -18,3 +18,7 @@ $ bundle exec thin start -p PORT_NUMBER
 ```
 
 Watch out for the caching though, it's quite aggressive!
+
+## Contributors
+
+Thanks to @Dangoo for updating the design!
