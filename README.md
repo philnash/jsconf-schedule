@@ -21,4 +21,4 @@ Watch out for the caching though, it's quite aggressive!
 
 ## Contributors
 
-Thanks to @Dangoo for updating the design!
+Thanks to [Daniel Gooß](https://github.com/Dangoo) for updating the design!
