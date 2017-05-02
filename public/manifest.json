@@ -1,6 +1,6 @@
 {
   "short_name": "JSConf Schedule",
-  "name": "JSConf, Reject.js and CSSConf 2015 Schedule",
+  "name": "JSConf and CSSConf 2017 Schedule",
   "icons": [
     {
       "src": "/images/apple-touch-icon.png",
@@ -23,7 +23,10 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#FF0079"
+  "start_url": "/?utm_source=homescreen",
+  "display": "minimal-ui",
+  "background_color": "#FF0079",
+  "theme_color": "#FF0079",
+  "dir": "ltr",
+  "orientation": "any"
 }
