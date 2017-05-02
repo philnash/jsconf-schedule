@@ -1,24 +1,22 @@
-# JSConf (and others) schedule
+# JSConf and CSSConf schedule
 
-Hey there! [JSConfEU](http://jsconf.eu) is a great conference but sadly(!) the schedule is all wrapped up in a [Google Spreadsheet](http://2015.jsconf.eu/news/2015/09/14/talk-schedule/).
+Hey there! [JSConfEU](http://jsconf.eu) is a great conference but sadly(!) the schedule is all wrapped up in a [Google Spreadsheet](http://2017.jsconf.eu/rough-schedule/).
 
-This is an offline capable web application that has the full schedule for JSConfEU, Reject.js and CSSConfEU. It uses Service Workers where supported and Application Cache as a fallback.
+This is an offline capable web application that has the full schedule for CSSConfEU and JSConfEU.
 
-It is available here: https://jsconf-schedule.herokuapp.com/
-
-(Thanks Heroku for https!)
+It will be available online soon.
 
 ## Contributing
 
-Pull requests are welcome if I have got something wrong. I apologise now, as the server requires Ruby to run. Clone the repository, then run:
+Pull requests are welcome for improvements or schedule updates.
+
+To run the application, clone the repository, then run:
 
 ```shell
-$ bundle install
-$ bundle exec thin start -p PORT_NUMBER
+$ npm install
+$ npm run dev
 ```
-
-Watch out for the caching though, it's quite aggressive!
 
 ## Contributors
 
-Thanks to [Daniel Gooß](https://github.com/Dangoo) for updating the design!
+Thanks to [Daniel Gooß](https://github.com/Dangoo) for the design.
