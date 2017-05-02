@@ -25,7 +25,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
-  if (url.pathname.match(/^\/((js|css)\/|manifest.json$)/)) {
+  if (url.pathname.match(/^\/((js|style)\/|manifest.json$)/)) {
     event.respondWith(returnFromCacheOrFetch(event.request, currentCache));
   }
   if (
