@@ -12,9 +12,13 @@
     "express-sslify": "^1.2.0"
   },
   "scripts": {
-    "start": "nodemon ."
+    "start": "nodemon .",
+    "prod": "node ."
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
+  },
+  "engines" : {
+    "node" : "6.9.2"
   }
 }
