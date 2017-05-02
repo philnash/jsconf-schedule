@@ -5,7 +5,7 @@ const enforce = require('express-sslify');
 const app = express();
 
 if (config.env === 'production') {
-  app.use(enforce.HTTPS());
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
 app.use(express.static('public'));
