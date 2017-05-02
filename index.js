@@ -8,7 +8,7 @@ if (config.env === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
 app.listen(config.port, () => {
   console.log('App listening on port ' + config.port);
