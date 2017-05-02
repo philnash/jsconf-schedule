@@ -4,7 +4,7 @@ const enforce = require('express-sslify');
 
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
+if (config.env === 'production') {
   app.use(enforce.HTTPS());
 }
 
