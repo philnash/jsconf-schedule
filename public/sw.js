@@ -111,16 +111,13 @@ function cacheThenNetwork(request, cacheName) {
         });
       return cacheResponse;
     } else {
-      // If it's not in the cache then start a fetch
-      return fetch(request)
-        .then(function(fetchResponse) {
-          cacheSuccessfulResponse(cache, request, fetchResponse);
-          return fetchResponse;
-        })
-        .catch(function() {
-          // Offline, so return the offline page.
-          return caches.match('/offline/');
-        });
+      // If it's not in the cache then start a fetch.
+      // I don't think the app can get here, as we cache the index, the CSS and
+      // the JS. I'm willing to be proved wrong though.
+      return fetch(request).then(function(fetchResponse) {
+        cacheSuccessfulResponse(cache, request, fetchResponse);
+        return fetchResponse;
+      });
     }
   });
 }
