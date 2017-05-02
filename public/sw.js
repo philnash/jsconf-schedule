@@ -1,44 +1,135 @@
 importScripts('/js/serviceworker-cache-polyfill.js');
 
-const currentCache = 'jsconf-schedule-2015-v5';
+const currentCache = 'jsconf-schedule-2017-v1';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(currentCache).then(function(cache){
-      return cache.addAll([
-        '/',
-        '/style/app.css',
-        '/js/app.js'
-      ]);
+    caches.open(currentCache).then(function(cache) {
+      return cache.addAll(['/', '/style/app.css', '/js/app.js']);
     })
   );
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheWhitelist = [currentCache];
-
   event.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if (cacheWhitelist.indexOf(key) === -1) {
-          return caches.delete(keyList[i]);
-        }
-      }));
+    deleteOldCaches([currentCache]).then(function() {
+      self.clients.claim();
     })
   );
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-        console.log(event);
-        if (response) {
-          console.log('Returned cached request');
-          return response;
-        }
-        console.log('Request wasn\'t cached');
-        return fetch(event.request);
-      }
-    )
-  );
+  var url = new URL(event.request.url);
+  if (url.pathname.match(/^\/((js|css)\/|manifest.json$)/)) {
+    event.respondWith(returnFromCacheOrFetch(event.request, currentCache));
+  }
+  if (
+    event.request.mode === 'navigate' ||
+    event.request.headers.get('Accept').indexOf('text/html') !== -1
+  ) {
+    // cache then network
+    event.respondWith(cacheThenNetwork(event.request, currentCache));
+  }
 });
+
+function cacheAllIn(paths, cacheName) {
+  return caches.open(cacheName).then(function(cache) {
+    return cache.addAll(paths);
+  });
+}
+
+function deleteOldCaches(currentCaches) {
+  return caches.keys().then(function(names) {
+    return Promise.all(
+      names
+        .filter(function(name) {
+          return currentCaches.indexOf(name) === -1;
+        })
+        .map(function(name) {
+          return caches.delete(name);
+        })
+    );
+  });
+}
+
+function openCacheAndMatchRequest(cacheName, request) {
+  var cachePromise = caches.open(cacheName);
+  var matchPromise = cachePromise.then(function(cache) {
+    return cache.match(request);
+  });
+  return [cachePromise, matchPromise];
+}
+
+function cacheSuccessfulResponse(cache, request, response) {
+  if (response.ok) {
+    cache.put(request, response.clone()).then(function() {
+      return response;
+    });
+  }
+  return response;
+}
+
+function returnFromCacheOrFetch(request, cacheName) {
+  return Promise.all(
+    openCacheAndMatchRequest(cacheName, request)
+  ).then(function(responses) {
+    var cache = responses[0];
+    var cacheResponse = responses[1];
+    // return the cached response if we have it, otherwise the result of the fetch.
+    return (
+      cacheResponse ||
+      fetch(request).then(function(fetchResponse) {
+        // Cache the updated file and then return the response
+        cacheSuccessfulResponse(cache, request, fetchResponse);
+        return fetchResponse;
+      })
+    );
+  });
+}
+
+function cacheThenNetwork(request, cacheName) {
+  return Promise.all(
+    openCacheAndMatchRequest(cacheName, request)
+  ).then(function(responses) {
+    var cache = responses[0];
+    var cacheResponse = responses[1];
+    if (cacheResponse) {
+      // If it's in the cache then start a fetch to update the cache, but
+      // return the cached response
+      fetch(request)
+        .then(function(fetchResponse) {
+          return cacheSuccessfulResponse(cache, request, fetchResponse);
+        })
+        .then(refresh)
+        .catch(function(err) {
+          // Offline/network failure, but nothing to worry about
+        });
+      return cacheResponse;
+    } else {
+      // If it's not in the cache then start a fetch
+      return fetch(request)
+        .then(function(fetchResponse) {
+          cacheSuccessfulResponse(cache, request, fetchResponse);
+          return fetchResponse;
+        })
+        .catch(function() {
+          // Offline, so return the offline page.
+          return caches.match('/offline/');
+        });
+    }
+  });
+}
+
+function refresh(response) {
+  console.log('Refreshing!');
+  return self.clients.matchAll().then(function(clients) {
+    clients.forEach(function(client) {
+      var message = {
+        type: 'refresh',
+        url: response.url,
+        eTag: response.headers.get('ETag')
+      };
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+}

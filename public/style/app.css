@@ -175,3 +175,23 @@ nav a.active {
   padding: 6px 20px;
   text-align: center;
 }
+
+.notice {
+  position:fixed;
+  bottom:47px;
+  width:100%;
+  color: #fff;
+  padding:0 20px;
+  background-color: #ff0079;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+.notice[hidden] {
+  opacity: 0;
+  display: block;
+  visibility: hidden;
+}
+.notice a{
+  color: #fff;
+}
