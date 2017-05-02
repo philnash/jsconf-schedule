@@ -1,14 +1,9 @@
 document.body.className = 'js';
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('/sw.js')
-    .then(function(registration) {
-      console.log(registration);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+  navigator.serviceWorker.register('/sw.js').catch(function(err) {
+    console.log(err);
+  });
 
   navigator.serviceWorker.addEventListener('message', function(event) {
     var message = JSON.parse(event.data);

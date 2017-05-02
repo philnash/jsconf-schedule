@@ -4,9 +4,14 @@ const currentCache = 'jsconf-schedule-2017-v1';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(currentCache).then(function(cache) {
-      return cache.addAll(['/', '/style/app.css', '/js/app.js']);
-    })
+    caches
+      .open(currentCache)
+      .then(function(cache) {
+        return cache.addAll(['/', '/style/app.css', '/js/app.js']);
+      })
+      .then(function() {
+        self.skipWaiting();
+      })
   );
 });
 
@@ -121,7 +126,6 @@ function cacheThenNetwork(request, cacheName) {
 }
 
 function refresh(response) {
-  console.log('Refreshing!');
   return self.clients.matchAll().then(function(clients) {
     clients.forEach(function(client) {
       var message = {
