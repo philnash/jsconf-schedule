@@ -1,6 +1,6 @@
 {
-  "short_name": "JSConf Schedule",
-  "name": "JSConf and CSSConf 2017 Schedule",
+  "short_name": "CSS/JSConfEU",
+  "name": "JSConfEU and CSSConfEU 2017 Schedule",
   "icons": [
     {
       "src": "/images/apple-touch-icon.png",
@@ -25,8 +25,8 @@
   ],
   "start_url": "/?utm_source=homescreen",
   "display": "minimal-ui",
-  "background_color": "#FF0079",
-  "theme_color": "#FF0079",
+  "background_color": "#0C1222",
+  "theme_color": "#0C1222",
   "dir": "ltr",
   "orientation": "any"
 }

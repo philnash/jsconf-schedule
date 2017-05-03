@@ -1,13 +1,18 @@
 importScripts('/js/serviceworker-cache-polyfill.js');
 
-const currentCache = 'jsconf-schedule-2017-v1';
+const currentCache = 'jsconf-schedule-2017-v2';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches
       .open(currentCache)
       .then(function(cache) {
-        return cache.addAll(['/', '/style/app.css', '/js/app.js']);
+        return cache.addAll([
+          '/',
+          '/style/app.css',
+          '/js/app.js',
+          '/images/header.svg'
+        ]);
       })
       .then(function() {
         self.skipWaiting();
@@ -25,7 +30,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
-  if (url.pathname.match(/^\/((js|style)\/|manifest.json$)/)) {
+  if (url.pathname.match(/^\/((js|style|images)\/|manifest.json$)/)) {
     event.respondWith(returnFromCacheOrFetch(event.request, currentCache));
   }
   if (
