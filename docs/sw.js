@@ -1,6 +1,6 @@
 importScripts('/js/serviceworker-cache-polyfill.js');
 
-const currentCache = 'jsconf-schedule-2017-v2';
+const currentCache = 'jsconf-schedule-2017-v3';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
