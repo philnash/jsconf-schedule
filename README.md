@@ -4,7 +4,7 @@ Hey there! [JSConfEU](http://jsconf.eu) is a great conference but sadly(!) the s
 
 This is an offline capable web application that has the full schedule for CSSConfEU and JSConfEU.
 
-It will be available online soon.
+You can visit the app at [https://jsconf.philna.sh](https://jsconf.philna.sh).
 
 ## Contributing
 
@@ -19,4 +19,5 @@ $ npm run dev
 
 ## Contributors
 
-Thanks to [Daniel Gooß](https://github.com/Dangoo) for the design.
+Thanks to [Daniel Gooß](https://github.com/Dangoo) for the 2015 design.
+Thanks to [@silkine](https://twitter.com/silkine) for the 2017 design.
