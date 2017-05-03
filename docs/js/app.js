@@ -83,7 +83,6 @@ window.addEventListener('DOMContentLoaded', function(evt) {
   day = today.getHours() < 6
     ? days[(today.getDay() + 6) % 7]
     : days[today.getDay()];
-  day = 'sat';
   hour = today.getHours();
   tab = document.getElementById('nav_' + day);
   if (tab !== null) {
